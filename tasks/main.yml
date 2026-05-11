@@ -1,0 +1,33 @@
+---
+# tasks/main.yml
+# Main tasks for linux_user_provisioning role
+
+- name: Ensure user groups exist
+  ansible.builtin.group:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ user_groups }}"
+
+- name: Create user accounts
+  ansible.builtin.user:
+    name: "{{ item.username }}"
+    groups: "{{ item.groups }}"
+    shell: "{{ item.shell | default('/bin/bash') }}"
+    create_home: true
+    state: present
+  loop: "{{ users }}"
+
+- name: Set SSH authorized keys
+  ansible.posix.authorized_key:
+    user: "{{ item.username }}"
+    key: "{{ item.ssh_key }}"
+    state: present
+  loop: "{{ users }}"
+  when: item.ssh_key is defined
+
+- name: Remove deprovisioned users
+  ansible.builtin.user:
+    name: "{{ item }}"
+    state: absent
+    remove: true
+  loop: "{{ users_to_remove | default([]) }}"
