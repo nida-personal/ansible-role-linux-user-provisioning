@@ -1,6 +1,8 @@
 ---
 # meta/main.yml
 galaxy_info:
+  role_name: linux_user_provisioning
+  namespace: nidafirdous
   author: nida-personal
   description: >
     Ansible role to automate Linux user provisioning, group assignment,
