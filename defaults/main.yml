@@ -1,0 +1,23 @@
+---
+# defaults/main.yml
+# Default variables for linux_user_provisioning role
+
+# List of groups to create
+user_groups:
+  - developers
+  - ops
+
+# List of users to provision
+users:
+  - username: john_doe
+    groups:
+      - developers
+    shell: /bin/bash
+    ssh_key: ""
+
+# List of users to deprovision
+users_to_remove: []
+
+# Password policy
+password_expires_days: 90
+minimum_password_length: 12
