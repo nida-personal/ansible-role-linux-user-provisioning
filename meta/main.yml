@@ -1,0 +1,29 @@
+---
+# meta/main.yml
+galaxy_info:
+  author: nida-personal
+  description: >
+    Ansible role to automate Linux user provisioning, group assignment,
+    SSH key management, and secure deprovisioning on RHEL/Ubuntu systems.
+  license: MIT
+  min_ansible_version: "2.10"
+  platforms:
+    - name: EL
+      versions:
+        - "8"
+        - "9"
+    - name: Ubuntu
+      versions:
+        - focal
+        - jammy
+  galaxy_tags:
+    - linux
+    - users
+    - provisioning
+    - ansible
+    - automation
+    - rhel
+    - ubuntu
+    - security
+
+dependencies: []
