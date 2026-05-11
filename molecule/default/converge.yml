@@ -1,0 +1,19 @@
+---
+# molecule/default/converge.yml
+- name: Converge
+  hosts: all
+  become: true
+
+  roles:
+    - role: ansible-role-linux-user-provisioning
+      vars:
+        user_groups:
+          - developers
+          - ops
+        users:
+          - username: testuser1
+            groups:
+              - developers
+            shell: /bin/bash
+        users_to_remove:
+          - olduser1
