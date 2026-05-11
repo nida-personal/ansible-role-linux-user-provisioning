@@ -1,0 +1,9 @@
+---
+# vars/main.yml
+# Role-specific variables (override defaults here for environment-specific values)
+
+# Supported shells
+supported_shells:
+  - /bin/bash
+  - /bin/sh
+  - /bin/zsh
