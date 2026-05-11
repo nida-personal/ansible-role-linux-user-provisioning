@@ -17,13 +17,13 @@
     state: present
   loop: "{{ users }}"
 
-- name: Set SSH authorized keys
-  ansible.posix.authorized_key:
-    user: "{{ item.username }}"
-    key: "{{ item.ssh_key }}"
-    state: present
-  loop: "{{ users }}"
-  when: item.ssh_key is defined
+# - name: Set SSH authorized keys
+#   ansible.posix.authorized_key:
+#     user: "{{ item.username }}"
+#     key: "{{ item.ssh_key }}"
+#     state: present
+#   loop: "{{ users }}"
+#   when: item.ssh_key is defined
 
 - name: Remove deprovisioned users
   ansible.builtin.user:
