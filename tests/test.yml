@@ -1,0 +1,18 @@
+---
+# tests/test.yml
+- name: Test linux_user_provisioning role
+  hosts: localhost
+  become: true
+
+  vars:
+    user_groups:
+      - testgroup
+    users:
+      - username: testuser
+        groups:
+          - testgroup
+        shell: /bin/bash
+    users_to_remove: []
+
+  roles:
+    - ansible-role-linux-user-provisioning
